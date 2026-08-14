@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { communityFlow, faqs, site } from '../data/site';
+---
+
+<BaseLayout title="Comunidade escolar" description="Conheça a parceria entre a UFBA e comunidades escolares para criar e experimentar jogos na Educação Básica.">
+  <section class="hero inner-hero community-hero">
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">UFBA e sua escola</p>
+        <h1>Uma parceria que começa <em>escutando.</em></h1>
+        <p class="hero-lead">Jogos podem abrir espaço para curiosidade, cooperação e novas formas de observar a aprendizagem. A comunidade escolar ajuda a definir cada passo.</p>
+        <p class="cost-tag"><span aria-hidden="true">✓</span> Sem custo para a escola</p>
+      </div>
+      <div class="table-scene" aria-hidden="true">
+        <div class="board-line line-one"></div><div class="board-line line-two"></div>
+        <span class="pawn pawn-one"></span><span class="pawn pawn-two"></span><span class="pawn pawn-three"></span>
+        <div class="dice"><i></i><i></i><i></i><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section benefit-section">
+    <div class="shell">
+      <SectionHeading eyebrow="Por que jogos?" title="Potenciais que aparecem quando a turma joga" text="O jogo não substitui o trabalho pedagógico. Ele oferece outro contexto para experimentar, conversar e observar." />
+      <div class="benefit-grid">
+        <article><span aria-hidden="true">↗</span><h3>Engajamento e autonomia</h3><p>Objetivos claros e escolhas podem estimular a participação e o desejo de tentar novamente.</p></article>
+        <article><span aria-hidden="true">◎</span><h3>Tentativa e erro</h3><p>Uma partida cria um espaço protegido para testar estratégias, errar e ajustar decisões.</p></article>
+        <article><span aria-hidden="true">∞</span><h3>Cooperação</h3><p>Explicar regras, negociar e jogar em equipe exercitam escuta, comunicação e convivência.</p></article>
+        <article><span aria-hidden="true">◇</span><h3>Avaliação formativa</h3><p>As jogadas podem revelar raciocínios, dúvidas, estratégias e conhecimentos ainda em construção.</p></article>
+        <article><span aria-hidden="true">✦</span><h3>Neurodiversidade</h3><p>Formatos variados podem ampliar as formas de participar e expressar habilidades e interesses.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section flow-section">
+    <div class="shell flow-layout">
+      <div class="sticky-heading"><SectionHeading eyebrow="A parceria" title="Como o projeto acontece" text="A escola não é apenas o lugar da atividade: é parceira na construção das perguntas e das respostas." /></div>
+      <ol class="flow-list">
+        {communityFlow.map(([title, description], index) => (
+          <li><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{description}</p></div></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section session-section">
+    <div class="shell">
+      <SectionHeading eyebrow="Na prática" title="O que acontece em uma sessão de jogo?" />
+      <div class="session-board">
+        <div class="session-main">
+          <p class="session-number">01</p><h3>Escolher e acolher</h3><p>Os jogos são apresentados com nome, objetivo e conteúdos relacionados. Os estudantes conhecem as opções e se organizam nas mesas.</p>
+        </div>
+        <div><p class="session-number">02</p><h3>Explicar</h3><p>Monitores ensinam as regras e ajudam o grupo a começar.</p></div>
+        <div><p class="session-number">03</p><h3>Observar</h3><p>A equipe acompanha decisões, dúvidas, estratégias e participação.</p></div>
+        <div><p class="session-number">04</p><h3>Conversar</h3><p>Jogadores e educadores refletem sobre o que aconteceu e o que foi aprendido.</p></div>
+        <div><p class="session-number">05</p><h3>Devolver</h3><p>A escola recebe os registros pedagógicos e o projeto incorpora as sugestões.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section roles-section">
+    <div class="shell">
+      <SectionHeading eyebrow="Cada pessoa conta" title="Uma mesa com muitos pontos de vista" />
+      <div class="roles-grid">
+        <article><p>Gestão</p><h3>Organiza as condições</h3><span>Ajuda a definir público, horários, espaços e prioridades da escola.</span></article>
+        <article><p>Educadores</p><h3>Conectam jogo e currículo</h3><span>Contextualizam necessidades, acompanham as mesas e conduzem reflexões.</span></article>
+        <article><p>Estudantes</p><h3>Jogam e transformam</h3><span>Experimentam, explicam suas escolhas e sugerem melhorias.</span></article>
+        <article><p>Famílias</p><h3>Ajudam a compreender</h3><span>Compartilham percepções e apoiam a participação dos estudantes.</span></article>
+        <article><p>Equipe UFBA</p><h3>Media e produz</h3><span>Pesquisa, cria materiais, conduz sessões e sistematiza o aprendizado.</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bncc-section">
+    <div class="shell bncc-grid">
+      <div class="bncc-visual" aria-hidden="true"><span>BNCC</span><i></i><i></i><i></i></div>
+      <div>
+        <SectionHeading eyebrow="Jogo e currículo" title="Conteúdo não é um adereço colado ao jogo" />
+        <p class="large-copy">As propostas consideram competências, habilidades e objetos de conhecimento da BNCC, mas também a experiência concreta de jogar.</p>
+        <p>Durante uma partida, perguntas simples — “por que você escolheu essa jogada?”, “que padrão apareceu?”, “o que mudaria se a regra fosse outra?” — ajudam a tornar o raciocínio visível sem transformar o jogo em uma prova disfarçada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section partners-section">
+    <div class="shell partners-grid">
+      <SectionHeading eyebrow="Primeiras parcerias" title="Escolas que ajudam a tirar o projeto do papel" text="A proposta de 2026.2 foi construída em diálogo inicial com duas comunidades escolares de Salvador." />
+      <div class="partner-list">
+        <article><span aria-hidden="true">A</span><div><h3>Colégio Estadual Professor Nogueira Passos</h3><p>Ensino Fundamental II · Pituba</p></div></article>
+        <article><span aria-hidden="true">B</span><div><h3>Escola Maré Cheia</h3><p>Ensino Fundamental I e II · Pituba</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="shell faq-grid">
+      <SectionHeading eyebrow="Perguntas frequentes" title="Antes da primeira partida" />
+      <div class="faq-list">
+        {faqs.map(([question, answer]) => (
+          <details><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="closing-section">
+    <div class="shell"><p class="eyebrow">ACCS Jogos na Educação Básica</p><h2>Universidade e escola aprendendo em torno da mesma mesa.</h2><p>Uma iniciativa do Instituto de Computação da UFBA · Oferta {site.semester}</p></div>
+  </section>
+</BaseLayout>

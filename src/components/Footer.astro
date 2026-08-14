@@ -1,0 +1,18 @@
+---
+import { site } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div>
+      <p class="eyebrow">Extensão universitária</p>
+      <p class="footer-title">{site.name}</p>
+      <p>Universidade e escola aprendendo em torno da mesma mesa.</p>
+    </div>
+    <div class="footer-meta">
+      <p><strong>{site.institution}</strong></p>
+      <p>Informações: <a href={`mailto:${site.email}`}>{site.email}</a></p>
+      <p>Oferta {site.semester}</p>
+    </div>
+  </div>
+</footer>

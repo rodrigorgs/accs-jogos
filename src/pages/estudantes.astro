@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Timeline from '../components/Timeline.astro';
+import { course, evaluations, semesterTimeline, site, tools } from '../data/site';
+---
+
+<BaseLayout title="Estudantes UFBA" description="Cronograma, avaliações, recursos e orientações da ACCS Jogos na Educação Básica em 2026.2.">
+  <section class="hero inner-hero student-hero">
+    <div class="shell">
+      <p class="eyebrow">Guia da turma · {site.semester}</p>
+      <h1>Do primeiro jogo ao <em>protótipo em campo.</em></h1>
+      <p class="hero-lead">Tudo o que você precisa para acompanhar a disciplina, organizar suas entregas e transformar uma ideia em uma experiência de aprendizagem.</p>
+      <dl class="course-facts">
+        <div><dt>Quando</dt><dd>{course.day}, {course.time}</dd></div>
+        <div><dt>Período</dt><dd>{course.dates}</dd></div>
+        <div><dt>Onde</dt><dd>{course.place}<small>{course.campus}</small></dd></div>
+        <div><dt>Carga horária</dt><dd>{course.workload}</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell overview-grid">
+      <div>
+        <SectionHeading eyebrow="Visão geral" title="Uma disciplina para fazer com — não apenas para — a comunidade" />
+        <p class="large-copy">Você vai estudar jogos modernos e seus mecanismos, criar adaptações voltadas às necessidades do ambiente escolar e analisar essas experiências com estudantes e educadores.</p>
+      </div>
+      <aside class="note-card">
+        <span class="note-icon" aria-hidden="true">✓</span>
+        <h3>{course.prerequisite}</h3>
+        <p>A turma reúne diferentes áreas. Computação, educação, design, psicologia, artes e outros saberes ganham força quando trabalham juntos.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section tinted-section">
+    <div class="shell">
+      <SectionHeading eyebrow="Jornada do semestre" title="Cinco meses, uma sequência de descobertas" text="As datas específicas e mudanças de agenda serão confirmadas nos canais da turma." />
+      <Timeline items={semesterTimeline} />
+    </div>
+  </section>
+
+  <section class="section evaluation-section">
+    <div class="shell">
+      <SectionHeading eyebrow="Avaliação" title="A nota acompanha o processo" text="As entregas combinam estudo, reflexão individual, produção colaborativa e atuação extensionista." />
+      <div class="evaluation-grid">
+        {evaluations.map((item, index) => (
+          <article class:list={['evaluation-card', index === 2 && 'featured']}>
+            <span class="score" aria-label={`${item.weight} pontos`}>{item.weight}</span>
+            <div><h3>{item.title}</h3><p>{item.description}</p></div>
+          </article>
+        ))}
+      </div>
+      <p class="total-score"><span>Total</span><strong>10,0 pontos</strong></p>
+    </div>
+  </section>
+
+  <section class="section make-section">
+    <div class="shell make-grid">
+      <div>
+        <SectionHeading eyebrow="Projeto principal" title="Criar um jogo é construir uma hipótese — e colocá-la à prova" />
+        <p class="large-copy">Cada estudante participa da criação de pelo menos um jogo com potencial pedagógico, partindo de um jogo existente ou de uma nova proposta.</p>
+      </div>
+      <ol class="check-steps">
+        <li><span>1</span><div><strong>Escolha pedagógica</strong><p>Defina temas, mecanismos e conteúdos que podem ser trabalhados.</p></div></li>
+        <li><span>2</span><div><strong>Adaptação e protótipo</strong><p>Modifique tema ou regras e produza uma versão que possa ser jogada.</p></div></li>
+        <li><span>3</span><div><strong>Manual e print-and-play</strong><p>Documente as regras e prepare os arquivos necessários para reproduzir o jogo.</p></div></li>
+        <li><span>4</span><div><strong>Teste, observe, refine</strong><p>Leve o jogo a campo, registre a experiência e aplique o feedback.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section resources-section">
+    <div class="shell">
+      <SectionHeading eyebrow="Atalhos" title="Recursos e ferramentas" text="Links para o cotidiano da disciplina e para sua pesquisa sobre jogos." />
+      <div class="resource-grid">
+        {tools.map((tool) => (
+          tool.href === '#' ? (
+            <div class="resource-card"><span>{tool.label}</span><small>{tool.note}</small></div>
+          ) : (
+            <a class="resource-card" href={tool.href} target="_blank" rel="noreferrer"><span>{tool.label} <b aria-hidden="true">↗</b></span><small>{tool.note}</small></a>
+          )
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section team-section">
+    <div class="shell team-grid">
+      <SectionHeading eyebrow="Equipe docente" title="Três perspectivas em torno da mesa" />
+      <ul>{course.teachers.map((teacher) => <li><span aria-hidden="true"></span>{teacher}</li>)}</ul>
+    </div>
+  </section>
+
+  <aside class="channel-notice">
+    <div class="shell"><strong>Fique de olho:</strong> Moodle e os canais internos da turma prevalecem em caso de mudança de prazo, encontro ou local.</div>
+  </aside>
+</BaseLayout>

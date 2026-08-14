@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { course, projectCycle, site } from '../data/site';
+---
+
+<BaseLayout title={site.name}>
+  <section class="hero home-hero">
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">ACCS · UFBA · Oferta {site.semester}</p>
+        <h1>Aprender pode ser uma <em>jogada coletiva.</em></h1>
+        <p class="hero-lead">Estudantes da universidade e comunidades escolares criam, experimentam e aprimoram jogos para abrir novos caminhos de aprendizagem.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="/estudantes">Sou estudante da UFBA <span aria-hidden="true">→</span></a>
+          <a class="button secondary" href="/comunidade">Faço parte de uma escola <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="game-composition" aria-label="Composição abstrata inspirada em um tabuleiro">
+        <div class="card card-one"><span class="card-number">60</span><span>horas de extensão</span></div>
+        <div class="card card-two"><span class="mini-grid" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>ideias em jogo</span></div>
+        <div class="token token-a"></div><div class="token token-b"></div><div class="token token-c"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section intro-section">
+    <div class="shell split-intro">
+      <SectionHeading eyebrow="Uma disciplina, dois territórios" title="Da sala de aula para a escola — e de volta." />
+      <p class="large-copy">A ACCS conecta teoria, fabricação e prática em campo. A comunidade participa como parceira na identificação de desafios, na experimentação dos jogos e na construção do conhecimento.</p>
+    </div>
+  </section>
+
+  <section class="section cycle-section">
+    <div class="shell">
+      <SectionHeading eyebrow="Como funciona" title="Um ciclo que melhora a cada rodada" text="O jogo final importa. O processo de escuta, teste e reflexão importa ainda mais." />
+      <ol class="cycle-grid">
+        {projectCycle.map(([number, title, text]) => (
+          <li><span>{number}</span><h3>{title}</h3><p>{text}</p></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section pathways-section">
+    <div class="shell">
+      <SectionHeading align="center" eyebrow="Escolha seu caminho" title="O mesmo projeto, a informação certa para você" />
+      <div class="pathways-grid">
+        <article class="pathway-card student-card">
+          <p class="card-kicker">Para a turma de {site.semester}</p>
+          <h2>Estudantes UFBA</h2>
+          <p>Cronograma, avaliações, orientações para os projetos, recursos e informações dos encontros.</p>
+          <ul class="mini-facts" aria-label="Informações rápidas da disciplina">
+            <li>{course.day}</li><li>{course.time}</li><li>{course.workload}</li>
+          </ul>
+          <a href="/estudantes">Ver página da disciplina <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="pathway-card community-card">
+          <p class="card-kicker">Para quem faz a escola acontecer</p>
+          <h2>Comunidade escolar</h2>
+          <p>Entenda a parceria, o que acontece em uma sessão de jogo e como cada pessoa participa.</p>
+          <ul class="mini-facts" aria-label="Públicos da página">
+            <li>Gestores</li><li>Educadores</li><li>Famílias e estudantes</li>
+          </ul>
+          <a href="/comunidade">Conhecer o projeto <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="facts-strip" aria-label="Destaques do projeto">
+    <div class="shell facts-grid">
+      <div><strong>60h</strong><span>de formação extensionista</span></div>
+      <div><strong>Inter</strong><span>disciplinar por natureza</span></div>
+      <div><strong>Maker</strong><span>fabricação digital e protótipos</span></div>
+      <div><strong>Campo</strong><span>atividades com escolas</span></div>
+    </div>
+  </section>
+</BaseLayout>
