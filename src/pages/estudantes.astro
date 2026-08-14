@@ -1,8 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-import Timeline from '../components/Timeline.astro';
-import { course, evaluations, semesterTimeline, site, tools } from '../data/site';
+import { course, courseTopics, evaluations, learningLoop, seminarThemes, site, studentFaqs, tools } from '../data/site';
 ---
 
 <BaseLayout title="Estudantes UFBA" description="Cronograma, avaliações, recursos e orientações da ACCS Jogos na Educação Básica em 2026.2.">
@@ -13,7 +12,7 @@ import { course, evaluations, semesterTimeline, site, tools } from '../data/site
       <p class="hero-lead">Tudo o que você precisa para acompanhar a disciplina, organizar suas entregas e transformar uma ideia em uma experiência de aprendizagem.</p>
       <dl class="course-facts">
         <div><dt>Quando</dt><dd>{course.day}, {course.time}</dd></div>
-        <div><dt>Período</dt><dd>{course.dates}</dd></div>
+        <div><dt>Oferta</dt><dd>Semestre {site.semester}</dd></div>
         <div><dt>Onde</dt><dd>{course.place}<small>{course.campus}</small></dd></div>
         <div><dt>Carga horária</dt><dd>{course.workload}</dd></div>
       </dl>
@@ -23,7 +22,7 @@ import { course, evaluations, semesterTimeline, site, tools } from '../data/site
   <section class="section">
     <div class="shell overview-grid">
       <div>
-        <SectionHeading eyebrow="Visão geral" title="Uma disciplina para fazer com — não apenas para — a comunidade" />
+        <SectionHeading eyebrow="Visão geral" title="Uma disciplina que dialoga com a comunidade" />
         <p class="large-copy">Você vai estudar jogos modernos e seus mecanismos, criar adaptações voltadas às necessidades do ambiente escolar e analisar essas experiências com estudantes e educadores.</p>
       </div>
       <aside class="note-card">
@@ -34,10 +33,31 @@ import { course, evaluations, semesterTimeline, site, tools } from '../data/site
     </div>
   </section>
 
-  <section class="section tinted-section">
+  <section class="section tinted-section topics-section">
     <div class="shell">
-      <SectionHeading eyebrow="Jornada do semestre" title="Cinco meses, uma sequência de descobertas" text="As datas específicas e mudanças de agenda serão confirmadas nos canais da turma." />
-      <Timeline items={semesterTimeline} />
+      <SectionHeading eyebrow="Conteúdos da disciplina" title="Um percurso do primeiro jogo ao evento final" text="Os conteúdos se conectam ao longo do semestre e podem ser reorganizados de acordo com o andamento dos projetos e das parcerias." />
+      <div class="topics-list">
+        <ul>
+          {courseTopics.map((item) => (
+            <li class:list={[item.phase === 'Celebrar' && 'final-topic']}>
+              <div><span class="phase-tag">{item.phase}</span><h3>{item.theme}</h3></div>
+              <p>{item.activities}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <p class="schedule-note"><strong>Importante:</strong> as visitas às escolas acontecem nos dias e horários de funcionamento de cada instituição, conforme escalas combinadas com a turma. Elas não ficam restritas ao horário regular da ACCS.</p>
+    </div>
+  </section>
+
+  <section class="section loop-section">
+    <div class="shell">
+      <SectionHeading eyebrow="Um exemplo possível" title="Como uma ideia percorre o loop da disciplina" text="Não existe um único caminho, mas esta história mostra como estudo, prática e extensão podem se conectar." />
+      <ol class="learning-loop">
+        {learningLoop.map(([title, description], index) => (
+          <li><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{description}</p></div></li>
+        ))}
+      </ol>
     </div>
   </section>
 
@@ -56,6 +76,17 @@ import { course, evaluations, semesterTimeline, site, tools } from '../data/site
     </div>
   </section>
 
+  <section class="section seminar-section">
+    <div class="shell seminar-layout">
+      <div>
+        <SectionHeading eyebrow="Seminários" title="Um mecanismo na teoria, um jogo na mesa" />
+        <p class="large-copy">Cada equipe escolhe um conjunto de mecanismos relacionados ou um estilo de jogo, explica como ele funciona e leva exemplos para a turma experimentar.</p>
+        <p>Os temas são sugestões: a seleção final e a formação das equipes serão organizadas nos encontros iniciais.</p>
+      </div>
+      <ul class="theme-cloud">{seminarThemes.map((theme, index) => <li><span>{String(index + 1).padStart(2, '0')}</span>{theme}</li>)}</ul>
+    </div>
+  </section>
+
   <section class="section make-section">
     <div class="shell make-grid">
       <div>
@@ -68,6 +99,18 @@ import { course, evaluations, semesterTimeline, site, tools } from '../data/site
         <li><span>3</span><div><strong>Manual e print-and-play</strong><p>Documente as regras e prepare os arquivos necessários para reproduzir o jogo.</p></div></li>
         <li><span>4</span><div><strong>Teste, observe, refine</strong><p>Leve o jogo a campo, registre a experiência e aplique o feedback.</p></div></li>
       </ol>
+    </div>
+  </section>
+
+  <section class="event-section">
+    <div class="shell event-grid">
+      <div class="event-date"><span>Jogar</span><small>evento<br />final</small></div>
+      <div>
+        <p class="eyebrow">A última grande jogada</p>
+        <h2>Evento final aberto na UFBA</h2>
+        <p class="large-copy">Os jogos saem das bancadas e ocupam as mesas em uma sessão aberta à comunidade interna e externa. É hora de apresentar o projeto, receber novos jogadores e compartilhar tudo o que mudou desde o primeiro protótipo.</p>
+        <ul><li>Jogos produzidos pela turma</li><li>Experimentação com o público</li><li>Socialização das experiências</li></ul>
+      </div>
     </div>
   </section>
 
@@ -90,6 +133,17 @@ import { course, evaluations, semesterTimeline, site, tools } from '../data/site
     <div class="shell team-grid">
       <SectionHeading eyebrow="Equipe docente" title="Três perspectivas em torno da mesa" />
       <ul>{course.teachers.map((teacher) => <li><span aria-hidden="true"></span>{teacher}</li>)}</ul>
+    </div>
+  </section>
+
+  <section class="section student-faq-section">
+    <div class="shell faq-grid">
+      <SectionHeading eyebrow="Perguntas frequentes" title="Para organizar sua participação" />
+      <div class="faq-list">
+        {studentFaqs.map(([question, answer]) => (
+          <details><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>
+        ))}
+      </div>
     </div>
   </section>
 
