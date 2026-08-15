@@ -58,20 +58,13 @@ export const evaluations: Evaluation[] = [
 ];
 
 export const courseTopics: TopicItem[] = [
-  { phase: 'Descobrir', theme: 'Jogos, educação e mecanismos', activities: 'Apresentação da ACCS, formação das equipes, fundamentos e sessão de jogos leves.' },
-  { phase: 'Descobrir', theme: 'Como explicar um jogo', activities: 'Estratégias para ensinar regras, prática em duplas e relato individual da experiência.' },
-  { phase: 'Mediar', theme: 'Jogar e lidar com pessoas', activities: 'Comunicação, mediação de conflitos, neurodiversidade e atividade prática.' },
-  { phase: 'Mediar', theme: 'Criar, adaptar e escrever regras', activities: 'Estratégias de adaptação, vocabulário de jogos e princípios de um bom manual.' },
-  { phase: 'Investigar', theme: 'Currículo escolar e BNCC', activities: 'Busca de jogos relacionados ao currículo e seleção de conteúdos com potencial pedagógico.' },
-  { phase: 'Investigar', theme: 'Playtesting e avaliação da aprendizagem', activities: 'Como testar protótipos, observar decisões e transformar uma partida em evidências para reflexão.' },
-  { phase: 'Compartilhar', theme: 'Seminários e experimentação', activities: 'Apresentações sobre mecanismos ou estilos, seguidas de jogos escolhidos pelas equipes.' },
-  { phase: 'Produzir', theme: 'Fabricação digital', activities: 'Cartas, tabuleiros, caixas, dados, impressão, corte, modelagem e preparação de arquivos.' },
-  { phase: 'Produzir', theme: 'Prototipação dos jogos', activities: 'Produção dos primeiros componentes, testes internos e revisão das regras.' },
-  { phase: 'Testar', theme: 'Playtest e ajustes', activities: 'Partidas com os protótipos, registro de problemas e preparação para a experiência em campo.' },
-  { phase: 'Testar', theme: 'Aprender com a escola', activities: 'Discussão das sessões realizadas nas escolas e incorporação do feedback recebido.' },
-  { phase: 'Refinar', theme: 'Versões finais', activities: 'Ajustes de jogabilidade, adequação pedagógica, acessibilidade e acabamento dos materiais.' },
-  { phase: 'Refinar', theme: 'Manuais e preparação do evento', activities: 'Fechamento do pacote print-and-play, testes finais e organização da apresentação pública.' },
-  { phase: 'Celebrar', theme: 'Grande sessão de jogos na UFBA', activities: 'Evento aberto à comunidade para jogar, apresentar os projetos e compartilhar aprendizados.' },
+  { phase: 'Estudar', theme: 'Jogos e educação', activities: 'Conceitos sobre jogos e sua relação com a educação.' },
+  { phase: 'Mediar', theme: 'Como explicar um jogo', activities: 'Estratégias para ensinar regras.' },
+  { phase: 'Mediar', theme: 'Como conduzir sessão de jogo e lidar com pessoas', activities: 'Comunicação, mediação de conflitos, neurodiversidade.' },
+  { phase: 'Criar', theme: 'Como adaptar jogos e escrever regras', activities: 'Estratégias de adaptação, vocabulário de jogos e princípios de um bom manual.' },
+  { phase: 'Criar', theme: 'Fabricação digital', activities: 'Cartas, tabuleiros, caixas, dados, impressão, corte, modelagem e preparação de arquivos.' },
+  { phase: 'Estudar', theme: 'Currículo escolar e BNCC', activities: 'Quais são as bases para os currículos no Brasil.' },
+  { phase: 'Mediar', theme: 'Playtesting e avaliação da aprendizagem', activities: 'Como testar protótipos, observar decisões e transformar uma partida em evidências para reflexão.' },
 ];
 
 export const seminarThemes = [
@@ -82,16 +75,15 @@ export const seminarThemes = [
 ] as const;
 
 export const learningLoop = [
-  ['Estudar', 'Conhece fundamentos de jogos, educação e mecanismos.'],
-  ['Experimentar', 'Joga diferentes jogos e relata o que sentiu, aprendeu e percebeu.'],
-  ['Compartilhar', 'Apresenta um seminário e conduz uma experiência de jogo com a turma.'],
-  ['Investigar', 'Identifica na BNCC um conteúdo que poderia ser trabalhado por meio de um jogo.'],
-  ['Problematizar', 'Percebe que o jogo existente é longo e que sua temática conversa mais com estudantes dos Estados Unidos.'],
-  ['Adaptar', 'Cria uma versão mais curta, contextualizada e adequada ao público da escola.'],
-  ['Produzir', 'Escreve o manual, prepara o print-and-play e fabrica os componentes.'],
-  ['Testar em campo', 'Leva o jogo à escola, observa as partidas e coleta feedback de estudantes e educadores.'],
-  ['Refinar', 'Revê regras, linguagem, duração e materiais com base no que aconteceu.'],
-  ['Celebrar', 'Apresenta o jogo final em um grande evento aberto na UFBA.'],
+  ['Estudar', 'Estudar fundamentos de jogos e educação.'],
+  ['Compartilhar (seminário)', 'Apresentar um seminário e conduzir uma experiência de jogo com a turma.'],
+  ['Jogar', 'Jogar diferentes jogos e relatar o que sentiu, aprendeu e percebeu.'],
+  ['Buscar', 'Identificar na BNCC um conteúdo que poderia ser trabalhado por meio de um jogo.'],
+  ['Adaptar', 'Criar uma versão mais curta, contextualizada e adequada ao público da escola.'],
+  ['Produzir', 'Escrever o manual, projetar e fabricar os componentes.'],
+  ['Testar em campo', 'Levar o jogo à escola, observar as partidas e coletar feedback de estudantes e educadores.'],
+  ['Refinar', 'Rever regras, linguagem, duração e materiais com base no que aconteceu.'],
+  ['Celebrar', 'Apresentar o jogo final em um grande evento aberto na UFBA.'],
 ] as const;
 
 export const studentFaqs = [
@@ -133,7 +125,7 @@ export const faqs = [
   ['Quais etapas da Educação Básica são atendidas?', 'O projeto foi planejado para os anos iniciais e finais do Ensino Fundamental e para o Ensino Médio. Cada atividade é ajustada ao grupo participante.'],
   ['Os professores da escola participam?', 'Sim. Educadores acompanham o planejamento e as sessões, ajudam a contextualizar as necessidades e participam da reflexão com os estudantes.'],
   ['Como a neurodiversidade é considerada?', 'A equipe busca oferecer formas variadas de participação, observar diferentes ritmos e evitar que uma única maneira de jogar ou aprender seja tratada como padrão.'],
-  ['Quanto dura uma sessão?', 'A duração e a organização são combinadas com cada escola. Como referência, as visitas do projeto preveem sessões de aproximadamente duas horas.'],
+  ['Quanto dura uma sessão?', 'A duração e a organização são combinadas com cada escola. Como referência, as visitas do projeto preveem sessões de 1 a 2 horas.'],
   ['Que tipo de registro é feito?', 'Os monitores registram observações pedagógicas sobre a experiência de jogo. Qualquer uso de imagens ou dados pessoais depende das autorizações e regras da escola.'],
   ['O que acontece com os jogos?', 'Depois dos testes e ajustes, a proposta é entregar materiais às escolas e disponibilizar versões finais e orientações gratuitamente online.'],
 ] as const;

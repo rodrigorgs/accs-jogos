@@ -52,7 +52,7 @@ import { course, courseTopics, evaluations, learningLoop, seminarThemes, site, s
 
   <section class="section loop-section">
     <div class="shell">
-      <SectionHeading eyebrow="Um exemplo possível" title="Como uma ideia percorre o loop da disciplina" text="Não existe um único caminho, mas esta história mostra como estudo, prática e extensão podem se conectar." />
+      <SectionHeading eyebrow="Um passo-a-passo" title="Como uma ideia percorre o loop da disciplina" text="Não existe um único caminho, mas esta história mostra como estudo, prática e extensão podem se conectar." />
       <ol class="learning-loop">
         {learningLoop.map(([title, description], index) => (
           <li><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{description}</p></div></li>
@@ -79,7 +79,7 @@ import { course, courseTopics, evaluations, learningLoop, seminarThemes, site, s
   <section class="section seminar-section">
     <div class="shell seminar-layout">
       <div>
-        <SectionHeading eyebrow="Seminários" title="Um mecanismo na teoria, um jogo na mesa" />
+        <SectionHeading eyebrow="Seminários" title="Um mecanismo na cabeça, um jogo na mesa" />
         <p class="large-copy">Cada equipe escolhe um conjunto de mecanismos relacionados ou um estilo de jogo, explica como ele funciona e leva exemplos para a turma experimentar.</p>
         <p>Os temas são sugestões: a seleção final e a formação das equipes serão organizadas nos encontros iniciais.</p>
       </div>
