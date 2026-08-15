@@ -30,24 +30,24 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: site/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Configurar GitHub Pages
         id: pages
         uses: actions/configure-pages@v5
 
       - name: Instalar dependências
-        working-directory: site
+        working-directory: .
         run: npm ci
 
       - name: Validar e gerar o site
-        working-directory: site
+        working-directory: .
         run: npm run build
 
       - name: Preparar artefato do Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site/dist
+          path: dist
 
   deploy:
     name: Publicar no GitHub Pages
