@@ -2,18 +2,20 @@
 import { nav, site } from '../data/site';
 
 const pathname = Astro.url.pathname;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (href: string) => `${base}${href}` || '/';
 ---
 
 <header class="site-header">
   <div class="shell header-inner">
-    <a class="brand" href="/" aria-label="ACCS Jogos — página inicial">
+    <a class="brand" href={withBase('/')} aria-label="ACCS Jogos — página inicial">
       <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span>
       <span><strong>{site.shortName}</strong><small>{site.institution}</small></span>
     </a>
     <nav aria-label="Navegação principal">
       <ul>
         {nav.map((item) => (
-          <li><a href={item.href} aria-current={pathname === item.href ? 'page' : undefined}>{item.label}</a></li>
+          <li><a href={withBase(item.href)} aria-current={pathname === withBase(item.href) ? 'page' : undefined}>{item.label}</a></li>
         ))}
       </ul>
     </nav>

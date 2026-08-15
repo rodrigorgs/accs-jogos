@@ -2,6 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import { course, projectCycle, site } from '../data/site';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const withBase = (href: string) => `${base}${href}` || '/';
 ---
 
 <BaseLayout title={site.name}>
@@ -12,8 +15,8 @@ import { course, projectCycle, site } from '../data/site';
         <h1>Aprender pode ser uma <em>jogada coletiva.</em></h1>
         <p class="hero-lead">Estudantes da universidade e comunidades escolares criam, experimentam e aprimoram jogos para abrir novos caminhos de aprendizagem.</p>
         <div class="hero-actions">
-          <a class="button primary" href="/estudantes">Sou estudante da UFBA <span aria-hidden="true">→</span></a>
-          <a class="button secondary" href="/comunidade">Faço parte de uma escola <span aria-hidden="true">→</span></a>
+          <a class="button primary" href={withBase('/estudantes')}>Sou estudante da UFBA <span aria-hidden="true">→</span></a>
+          <a class="button secondary" href={withBase('/comunidade')}>Faço parte de uma escola <span aria-hidden="true">→</span></a>
         </div>
       </div>
       <div class="game-composition" aria-label="Composição abstrata inspirada em um tabuleiro">
@@ -53,7 +56,7 @@ import { course, projectCycle, site } from '../data/site';
           <ul class="mini-facts" aria-label="Informações rápidas da disciplina">
             <li>{course.day}</li><li>{course.time}</li><li>{course.workload}</li>
           </ul>
-          <a href="/estudantes">Ver página da disciplina <span aria-hidden="true">→</span></a>
+          <a href={withBase('/estudantes')}>Ver página da disciplina <span aria-hidden="true">→</span></a>
         </article>
         <article class="pathway-card community-card">
           <p class="card-kicker">Para quem faz a escola acontecer</p>
@@ -62,7 +65,7 @@ import { course, projectCycle, site } from '../data/site';
           <ul class="mini-facts" aria-label="Públicos da página">
             <li>Gestores</li><li>Educadores</li><li>Famílias e estudantes</li>
           </ul>
-          <a href="/comunidade">Conhecer o projeto <span aria-hidden="true">→</span></a>
+          <a href={withBase('/comunidade')}>Conhecer o projeto <span aria-hidden="true">→</span></a>
         </article>
       </div>
     </div>
